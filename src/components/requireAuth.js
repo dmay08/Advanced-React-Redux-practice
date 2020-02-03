@@ -23,7 +23,7 @@ export default ChildComponent => {
         // ------------- moved here (to HOC) -------------
 
         render() {
-            return <ChildComponent />
+            return <ChildComponent {...this.props} /> // passes THIS HOC's props down to <ChildComponent />
         }
     }
 
