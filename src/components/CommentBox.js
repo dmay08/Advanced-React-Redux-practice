@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 // import './CommentBox.scss'
+import requireAuth from '../components/requireAuth'
 
 class CommentBox extends React.Component {
 
@@ -9,16 +10,29 @@ class CommentBox extends React.Component {
         comment: ''
     }
 
+    // componentDidMount() {
+    //     this.shouldNavigateAway()
+    // }
+
+    // componentDidUpdate() {
+    //     this.shouldNavigateAway()
+    // }
+
+    // shouldNavigateAway() {
+    //     if (!this.props.auth) {
+    //         this.props.history.push('/') // takes user back to root route
+    //     }
+    // }
+
     handleChange = (event) => {
         this.setState({ comment: event.target.value })
     }
 
+
     handleSubmit = (event) => {
         event.preventDefault() // prevent page from reloading
-        // Todo = call action creator
-        this.props.saveComment(this.state.comment)
-        // Clear out input 
-        this.setState({ comment: '' })
+        this.props.saveComment(this.state.comment)  // call action creator
+        this.setState({ comment: '' }) // Clear out input 
     }
 
     render() {
@@ -37,4 +51,11 @@ class CommentBox extends React.Component {
     }
 }
 
-export default connect(null, actions)(CommentBox) 
+// function mapStateToProps(state) {
+//     return { auth: state.auth }
+// }
+
+// export default connect(mapStateToProps, actions)(CommentBox) 
+export default connect(null, actions)(requireAuth(CommentBox)) // used 'REQUIRE_AUTH!!' hoc!'
+
+// ----- danny > moved mapState to HOC ('requireAuth')
