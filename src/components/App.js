@@ -14,6 +14,7 @@ import { Route, Link } from 'react-router-dom' // now we can use <Route path={co
 // }
 
 // -------------- after importing { Route } --------------
+
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 
