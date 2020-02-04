@@ -15,7 +15,7 @@ export default ({dispatch}) => next => action => {
     }
     // If it does, then wait for it to resolve (chain on '.then()') >>> get its data >>> dispatch it
     action.payload.then(function(response) {
-        const newAction = { ... action, payload: response } // grab ALL properties in action object
+        const newAction = { ...action, payload: response } // grab ALL properties in action object
         dispatch(newAction)
     })
     // If it doesn't, then send the action on to the next middleware

@@ -4,15 +4,16 @@ import { createStore, applyMiddleware } from 'redux'
 import reducers from './reducers'
 // import reduxPromise from 'redux-promise'
 import async from './middlewares/async'
+import stateValidator from './middlewares/stateValidator'
 
 export default (props) => {
-    
+
     const store = createStore(
         reducers,
         {}, // {} is initial state (empty object)
-        applyMiddleware(async)
+        applyMiddleware(async, stateValidator)
         // applyMiddleware(reduxPromise)
-    ) 
+    )
 
     return (
         <Provider store={store} >
